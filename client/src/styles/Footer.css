@@ -1,0 +1,52 @@
+.Footer {
+  padding-top: 20px;
+  background-color: #f8f6f2;
+}
+
+.FooterMain {
+  color: #005450;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 10px;
+}
+
+.FooterMain p {
+  padding-top: 10px;
+}
+.footerBottom {
+  text-align: center;
+}
+
+.footerItems {
+  text-decoration: none;
+  color: #005450;
+}
+
+.sociali {
+  margin-top: -10px;
+}
+
+.sociali > p {
+  padding-bottom: 10px;
+}
+
+.sociali .socialiBtn {
+  border-radius: 50%;
+  background-color: #222326;
+  width: 30px;
+  height: 30px;
+  border: none;
+  margin: 0px 19px;
+  padding: 0px;
+}
+
+.sociali .socialiBtn i {
+  color: white;
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+}
+
+.sociali .socialiBtn :hover {
+  color: #1ed760;
+}

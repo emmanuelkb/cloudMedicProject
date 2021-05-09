@@ -1,0 +1,91 @@
+.Navbar {
+  background-color: #f8f6f2;
+  /* background-color: #fff; */
+  height: 50px;
+  /* position: sticky; */
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-decoration: none;
+  padding: 0 40px;
+  overflow: hidden;
+
+  /* z-index: 10; */
+}
+
+.Navbar > li {
+  list-style: none;
+  padding-top: 10px;
+}
+
+.Navbar > p {
+  padding-top: 10px;
+}
+
+.NavbarItems {
+  text-decoration: none;
+  font-size: 20px;
+  color: #005450;
+}
+
+.NavbarItems:hover {
+  border-bottom: 2px solid #005450;
+}
+
+.NavbarItemsLast:hover {
+  border: none;
+}
+
+.NavTitle {
+  font-size: 40px;
+  text-decoration: none;
+  color: #005450;
+}
+
+.NavbarButton {
+  background-color: #005450;
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  outline: none;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .Navbar {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    text-align: center;
+  }
+  .NavbarButton {
+    margin-bottom: 10px;
+  }
+  .Navbar > p {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Navbar {
+    display: flex;
+    flex-direction: column;
+    height: 10%;
+    text-align: center;
+  }
+  .NavbarButton {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .Navbar {
+    display: flex;
+    height: 10%;
+    text-align: center;
+    padding: 0;
+  }
+}

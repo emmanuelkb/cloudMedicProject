@@ -1,0 +1,43 @@
+.Sidebar {
+  /* box-sizing: border-box; */
+  background-color: #fff;
+  border-radius: 0px 50px 50px 0px;
+  width: 15%;
+  height: auto;
+  text-decoration: none;
+  padding: 20px;
+}
+.SideBarTitle {
+  font-size: 40px;
+  text-decoration: none;
+  color: #005450;
+}
+
+.SideBarLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.SideBarDivOne {
+  margin-top: 50px;
+}
+
+.MainLinks {
+  font-size: 20px;
+  color: #333333;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.SideBarDivTwo {
+  position: static;
+  bottom: 30px;
+}
+
+hr {
+  width: 10vw;
+}
+
+.LogOut {
+  cursor: pointer;
+}
