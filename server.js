@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cors());
 
 // Socket middleware
-const io = require("socket.io")(8900, {
+const io = require("socket.io")(process.env.PORT || 8900, {
   cors: {
     origin: "http://localhost:3000",
   },
@@ -80,4 +80,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(port, () => console.log("Server up and running"));
+app.listen(process.env.PORT || 4000, () =>
+  console.log("Server up and running")
+);
