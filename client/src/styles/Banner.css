@@ -7,7 +7,7 @@
   /* background-color: rgb(100, 188, 174); */
   background-color: #fff;
   color: #333333;
-  background-image: url("C:\Users\ekwab\Desktop\HealthWeb\client\src\images\img1.png");
+  background-image: url("https://cloudmedic.s3-eu-west-1.amazonaws.com/img1.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
