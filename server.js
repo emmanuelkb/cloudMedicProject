@@ -9,7 +9,6 @@ const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
 const path = require("path");
-const morgan = require("morgan");
 require("./config/dbConnect");
 const PORT = process.env.PORT || 4000;
 const socketPORT = process.env.PORT || 8900;
