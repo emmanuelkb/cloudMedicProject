@@ -8,18 +8,19 @@ const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
 const path = require("path");
 require("./config/dbConnect");
-const appPORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 const socketPORT = process.env.PORT || 8900;
 
 app.use(express.json());
 app.use(cors());
 
 // Socket middleware
-const io = require("socket.io")(socketPORT || 8900, {
-  cors: {
-    origin: "http://localhost:3000",
-  },
-});
+const io = require("socket.io")();
+// (socketPORT, {
+//   cors: {
+//     origin: "http://localhost:3000",
+//   },
+// });
 
 let users = [];
 
@@ -76,9 +77,6 @@ app.use("/message", messageRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-  });
 }
 
-app.listen(appPORT || 4000, () => console.log("Server up and running"));
+app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
