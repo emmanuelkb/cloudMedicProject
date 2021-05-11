@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const morgan = require("morgan");
 const app = express();
 const server = require("http").createServer(app);
 const userRouter = require("./Router/userRouter");
@@ -8,6 +9,7 @@ const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
 const path = require("path");
+const morgan = require("morgan");
 require("./config/dbConnect");
 const PORT = process.env.PORT || 4000;
 const socketPORT = process.env.PORT || 8900;
@@ -71,6 +73,8 @@ io.on("connection", (socket) => {
 
 //when disconnect
 // end of socket middleware
+
+app.use(morgan("tiny"));
 
 app.use("/user", userRouter);
 app.use("/medic", medicRouter);
