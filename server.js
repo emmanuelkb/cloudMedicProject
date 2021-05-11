@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 4000;
 const socketPORT = process.env.PORT || 8900;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // Socket middleware
