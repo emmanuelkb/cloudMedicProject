@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const server = require("http").createServer(app);
 const userRouter = require("./Router/userRouter");
 const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
@@ -16,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // Socket middleware
-const io = require("socket.io")();
+const io = require("socket.io")(server);
 // (socketPORT, {
 //   cors: {
 //     origin: "http://localhost:3000",
@@ -78,9 +79,9 @@ app.use("/message", messageRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  });
+  // app.get("*", (req, res) => {
+  //   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  // });
 }
 
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
