@@ -6,15 +6,16 @@ const userRouter = require("./Router/userRouter");
 const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
-const port = process.env.port || 4000;
 const path = require("path");
 require("./config/dbConnect");
+const appPORT = process.env.PORT || 4000;
+const socketPORT = process.env.PORT || 8900;
 
 app.use(express.json());
 app.use(cors());
 
 // Socket middleware
-const io = require("socket.io")(process.env.PORT || 8900, {
+const io = require("socket.io")(socketPORT || 8900, {
   cors: {
     origin: "http://localhost:3000",
   },
@@ -80,6 +81,4 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.listen(process.env.PORT || 4000, () =>
-  console.log("Server up and running")
-);
+app.listen(appPORT || 4000, () => console.log("Server up and running"));
