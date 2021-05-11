@@ -8,9 +8,9 @@
     "install-client": " cd client && npm install",
     "postinstall": "gulp build",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "node server.js",
+    "start": "concurrently \"node server.js\" \"cd client && npm start \"",
     "client": "cd client && npm start ",
-    "dev": "concurrently -n 'server,client' -c 'red,green'  \"nodemon server.js\" \"npm run client\""
+    "dev": "concurrently \"node server.js\" \"cd client && npm start \""
   },
   "keywords": [],
   "author": "",
