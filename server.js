@@ -9,7 +9,6 @@ const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
 const path = require("path");
-const router = require("./Router");
 require("./config/dbConnect");
 const PORT = process.env.PORT || 4000;
 const socketPORT = process.env.PORT || 8900;
@@ -88,5 +87,5 @@ if (process.env.NODE_ENV === "production") {
   // });
 }
 
-app.use(router);
+app.use(userRouter);
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
