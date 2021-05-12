@@ -9,6 +9,7 @@ const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
 const path = require("path");
+const router = require("./Router");
 require("./config/dbConnect");
 const PORT = process.env.PORT || 4000;
 const socketPORT = process.env.PORT || 8900;
@@ -82,10 +83,10 @@ app.use("/message", messageRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  app.get("*", (req, res) => {
-    // res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-    res.sendFile(path.join(__dirname, "client/build/index.html"));
-  });
+  // app.get("*", (req, res) => {
+  //   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  // });
 }
 
+app.use(router);
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
