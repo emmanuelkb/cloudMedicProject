@@ -75,11 +75,6 @@ io.on("connection", (socket) => {
 
 app.use(morgan("tiny"));
 
-app.use("/user", userRouter);
-app.use("/medic", medicRouter);
-app.use("/conversation", conversationRouter);
-app.use("/message", messageRouter);
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   // app.get("*", (req, res) => {
@@ -87,5 +82,9 @@ if (process.env.NODE_ENV === "production") {
   // });
 }
 
-app.use(userRouter);
+app.use("/user", userRouter);
+app.use("/medic", medicRouter);
+app.use("/conversation", conversationRouter);
+app.use("/message", messageRouter);
+
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
