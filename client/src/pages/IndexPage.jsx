@@ -1,7 +1,7 @@
 import Navigation from "../components/Navigation";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
-import "/../styles/IndexPage.css";
+import "../styles/IndexPage.css";
 import Newsletter from "../components/Newsletter";
 import doorimg from "../images/doorimg.png";
 
