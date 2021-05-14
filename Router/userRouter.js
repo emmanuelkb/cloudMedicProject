@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const userController = require("../controller/userController");
+const path = require("path");
 
 router.get("/all", userController.getUsers);
 router.get("/userCheck", userController.getUser);

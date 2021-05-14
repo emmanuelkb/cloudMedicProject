@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 import "../styles/SignInPage.css";
 
 const fetchQuery = async ({ uri, method = "GET", body = null }) => {
@@ -29,13 +30,16 @@ const SigninPage = () => {
       password: password,
     };
 
-    const data = await fetchQuery({
-      uri: "http://localhost:4000/user/login",
-      method: "POST",
-      body: newUser,
-    });
+    // const data = await fetchQuery({
+    //   uri: "http://localhost:4000/user/login",
+    //   method: "POST",
+    //   body: newUser,
+    // });
+
+    const data = await axios.post("http://localhost:4000/user/login", newUser);
+    console.log(data.data);
     setTimeout(() => {
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("token", data.data.token);
       history.push("/dashboard");
     }, 1000);
   };

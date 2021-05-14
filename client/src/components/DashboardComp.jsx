@@ -24,8 +24,6 @@ const DashboardComp = () => {
       requestOptions
     );
     const data = await result.json();
-
-    console.log(data);
     localStorage.setItem("user", data.user);
     setUser(data.user);
   }, []);
