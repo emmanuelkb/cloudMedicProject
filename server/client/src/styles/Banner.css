@@ -1,0 +1,47 @@
+.Hero {
+  /* position: relative; */
+  /* top: 50px;  */
+  font-size: 45px;
+  height: 120vh;
+  display: flex;
+  /* background-color: rgb(100, 188, 174); */
+  background-color: #fff;
+  color: #333333;
+  background-image: url("https://cloudmedic.s3-eu-west-1.amazonaws.com/img1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.heroInner1 {
+  max-width: 50%;
+  padding-top: 150px;
+}
+
+.heroInner1 h1 {
+  padding-left: 30px;
+}
+.BannerButton {
+  height: 50px;
+  width: 200px;
+  border: none;
+  font-size: 16px;
+  border-radius: 50px;
+  background-color: rgb(79, 127, 113);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  margin: 50px 100px;
+}
+
+@media screen and (max-width: 600px) {
+  .Hero {
+    font-size: 30px;
+    height: 100vh;
+    background-color: #fff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 900px) {
+}

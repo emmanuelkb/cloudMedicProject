@@ -31,6 +31,7 @@ const register = async (req, res) => {
     gender,
     height,
     weight,
+    blood,
     currentSubscription,
   } = result;
 
@@ -52,6 +53,7 @@ const register = async (req, res) => {
     height,
     weight,
     currentSubscription,
+    blood,
   });
 
   res.status(201).json({ user });

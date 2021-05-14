@@ -32,6 +32,12 @@ const doctorSchema = new Schema(
       type: String,
       required: [true, "Speciality is required"],
     },
+    patients: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   { timestamps: true }
 );

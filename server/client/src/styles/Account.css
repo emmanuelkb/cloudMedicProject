@@ -1,0 +1,30 @@
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 300px;
+}
+
+.updateButton {
+  margin-top: 50px;
+  height: 40px;
+  width: 120px;
+  background-color: rgb(206, 206, 207);
+  color: rgb(255, 255, 255);
+  border-radius: 500px;
+  border: none;
+  text-transform: uppercase;
+  outline: none;
+  align-self: center;
+  margin-bottom: 50px;
+  cursor: pointer;
+}
+
+.updateInput {
+  border: none;
+  border-bottom: 2px solid grey;
+  font-size: 1em;
+  /* padding-bottom: 10px; */
+  outline: none;
+  margin-bottom: 10px;
+  padding-left: 15px;
+}

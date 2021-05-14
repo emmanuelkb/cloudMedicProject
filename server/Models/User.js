@@ -37,6 +37,10 @@ const userSchema = new Schema(
     currentSubscription: {
       type: String,
     },
+    medic: {
+      type: Schema.Types.ObjectId,
+      ref: "Doctor",
+    },
   },
   { timestamps: true }
 );

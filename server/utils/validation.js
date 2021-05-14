@@ -5,14 +5,11 @@ const registerValidator = joi.object({
   lastName: joi.string().required(),
   email: joi.string().email().required(),
   password: joi.string().required().min(5),
-  phoneNumber: joi
-    .string()
-    .length(10)
-    .pattern(/^[0-9]+$/)
-    .required(),
+  phoneNumber: joi.string().required(),
   gender: joi.string(),
   height: joi.number(),
   weight: joi.number(),
+  blood: joi.string(),
   currentSubscription: joi.string(),
 });
 
