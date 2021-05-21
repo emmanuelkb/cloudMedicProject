@@ -14,7 +14,7 @@ const Chat = () => {
   const socket = useRef();
   const [newMessage, setNewMessage] = useState("");
   const [arrivalMessage, setArrivalMessage] = useState(null);
-  const [onlineUsers, setoOlineUsers] = useState([]);
+  const [onlineUsers, setOnlineUsers] = useState([]);
 
   const scrollRef = useRef();
   const [user, setUser] = useState({});
@@ -39,7 +39,7 @@ const Chat = () => {
   useEffect(() => {
     socket.current.emit("addUser", user._id);
     socket.current.on("getUsers", (users) => {
-      setoOlineUsers(users);
+      setOnlineUsers(users);
     });
   }, [user]);
 

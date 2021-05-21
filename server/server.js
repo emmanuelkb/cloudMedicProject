@@ -8,6 +8,7 @@ const userRouter = require("./Router/userRouter");
 const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
+const appointmentRouter = require("./Router/appoitnmentRouter");
 const path = require("path");
 require("./config/dbConnect");
 const PORT = process.env.PORT || 4000;
@@ -87,6 +88,7 @@ app.get("/", (req, res) => {
 });
 app.use("/user", userRouter);
 app.use("/medic", medicRouter);
+app.use("/appointment", appointmentRouter);
 app.use("/conversation", conversationRouter);
 app.use("/message", messageRouter);
 

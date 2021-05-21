@@ -37,7 +37,7 @@ const MdSigninPage = () => {
 
     setTimeout(() => {
       localStorage.setItem("token", data.token);
-      history.push("/mddashboard");
+      history.push("/md/dashboard");
     }, 1000);
   };
 

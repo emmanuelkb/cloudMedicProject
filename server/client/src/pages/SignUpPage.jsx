@@ -53,7 +53,6 @@ const SignUpPage = () => {
       blood: user.blood,
       currentSubscription: value,
     };
-    console.log(value);
     const data = fetchQuery({
       uri: "http://localhost:4000/user/register",
       method: "POST",

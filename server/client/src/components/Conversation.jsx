@@ -4,18 +4,16 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Conversation = ({ conversation, currentUser }) => {
-  const [user, setUser] = useState({ firstName: "Emmanuel" });
+  const [user, setUser] = useState("");
 
   useEffect(() => {
-    const friendId = conversation.members.find((m) => m !== currentUser._id);
+    const medicId = conversation.members.find((m) => m !== currentUser._id);
 
     const getUser = async () => {
       try {
-        const res = await axios(
-          "http://localhost:4000/user?userId=" + friendId
-        );
-        setUser(res.data);
-        console.log(res.data);
+        const res = await axios("http://localhost:4000/user/medic/" + medicId);
+        setUser(res.data.medic);
+        console.log(res);
       } catch (err) {
         console.log(err);
       }
@@ -26,7 +24,7 @@ const Conversation = ({ conversation, currentUser }) => {
   return (
     <div className="conversation">
       <img className="conversationImg" src={img2} alt="" />
-      <span className="conversationName">{user.firstName}</span>
+      <span className="conversationName">{user?.firstName}</span>
     </div>
   );
 };

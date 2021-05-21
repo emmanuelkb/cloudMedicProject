@@ -3,19 +3,6 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../styles/SignInPage.css";
 
-const fetchQuery = async ({ uri, method = "GET", body = null }) => {
-  const response = await fetch(uri, {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: body !== null ? JSON.stringify(body) : null,
-  });
-  const data = await response.json();
-
-  return data;
-};
-
 const SigninPage = () => {
   let history = useHistory();
 
@@ -29,12 +16,6 @@ const SigninPage = () => {
       email: email,
       password: password,
     };
-
-    // const data = await fetchQuery({
-    //   uri: "http://localhost:4000/user/login",
-    //   method: "POST",
-    //   body: newUser,
-    // });
 
     const data = await axios.post("http://localhost:4000/user/login", newUser);
     console.log(data.data);

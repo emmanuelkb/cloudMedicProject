@@ -38,6 +38,12 @@ const doctorSchema = new Schema(
         ref: "User",
       },
     ],
+    appointments: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Appointment",
+      },
+    ],
   },
   { timestamps: true }
 );
