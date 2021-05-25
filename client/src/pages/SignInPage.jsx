@@ -17,10 +17,7 @@ const SigninPage = () => {
         password: password,
       };
 
-      const data = await axios.post(
-        "http://localhost:4000/user/login",
-        newUser
-      );
+      const data = await axios.post("/user/login", newUser);
       console.log(data.data);
       setTimeout(() => {
         localStorage.setItem("token", data.data.token);
