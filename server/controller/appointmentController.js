@@ -43,8 +43,8 @@ const getAppointments = async (req, res) => {
 
 const getAppointment = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const appointment = await Appointment.find({ user: userId });
+    const { id } = req.params;
+    const appointment = await Appointment.findById(id);
     res.status(200).json({ appointment });
   } catch (err) {
     res.status(500).json(err);

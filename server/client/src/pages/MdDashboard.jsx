@@ -4,8 +4,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MdSideBar from "../components/MdSideBar";
 import MdDashboardComp from "../components/MdDashboardComp";
 import MdPatients from "../components/MdPatients";
-import Account from "../components/Account";
-import Chat from "../components/Chat";
+import MdAccount from "../components/MdAccount";
+import Chat2 from "../components/Chat2";
 
 const Dashboard = () => {
   return (
@@ -15,8 +15,8 @@ const Dashboard = () => {
         <Switch>
           <Route path="/md/dashboard" exact component={MdDashboardComp} />
           <Route path="/md/dashboard/patients" component={MdPatients} />
-          {/* <Route path="/md/dashboard/schedule" component={Account} />
-          <Route path="/md/dashboard/chat" component={Chat} /> */}
+          <Route path="/md/dashboard/account" component={MdAccount} />
+          <Route path="/md/dashboard/chat" component={Chat2} />
         </Switch>
       </BrowserRouter>
     </div>

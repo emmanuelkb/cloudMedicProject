@@ -11,18 +11,24 @@ const SigninPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const newUser = {
+        email: email,
+        password: password,
+      };
 
-    const newUser = {
-      email: email,
-      password: password,
-    };
-
-    const data = await axios.post("http://localhost:4000/user/login", newUser);
-    console.log(data.data);
-    setTimeout(() => {
-      localStorage.setItem("token", data.data.token);
-      history.push("/dashboard");
-    }, 1000);
+      const data = await axios.post(
+        "http://localhost:4000/user/login",
+        newUser
+      );
+      console.log(data.data);
+      setTimeout(() => {
+        localStorage.setItem("token", data.data.token);
+        history.push("/dashboard");
+      }, 1000);
+    } catch (error) {
+      alert("Incorrect email or password");
+    }
   };
 
   return (

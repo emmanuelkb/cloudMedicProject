@@ -31,22 +31,53 @@ const MdPatients = () => {
     getMedic();
   }, []);
   return (
-    <div>
-      <div>
-        <p>Add Patient</p>
-        <input type="text" />
-        <button>add</button>
-      </div>
-      <div>
-        <p>My Patients</p>
-        <div className="patientsCard">
-          {patient.map((patients) => (
-            <li>
-              <p>{patients.firstName + " " + patients.lastName}</p>
-              <p>{patients.gender}</p>
-              <p>{patients.phoneNumber}</p>
-            </li>
-          ))}
+    <div className="patients">
+      <div className="topLevel">
+        <div className="flexOne">
+          <p>My Patients</p>
+          <div className="patientsCard">
+            {patient.map((patients) => (
+              <li className="patientsList">
+                <p>{patients.firstName + " " + patients.lastName}</p>
+                <p>{patients.gender}</p>
+                <p>{patients.blood}</p>
+                <p>{patients.weight}</p>
+                <p>{patients.height}</p>
+                <p>{patients.currentSubscription}</p>
+              </li>
+            ))}
+          </div>
+        </div>
+
+        <div className="diagnosis">
+          <p>Diagnosis/Report</p>
+          <input type="text" placeholder="Patient Id" className="reportInput" />
+          {/* <p>Date</p> */}
+          <textarea
+            className="reportTextAreas"
+            name=""
+            id=""
+            cols="50"
+            rows="8"
+            placeholder="Diagnosis"
+          ></textarea>
+          <textarea
+            className="reportTextAreas"
+            name=""
+            id=""
+            cols="50"
+            rows="5"
+            placeholder="Lab Tests"
+          ></textarea>
+          <textarea
+            className="reportTextAreas"
+            name=""
+            id=""
+            cols="50"
+            rows="8"
+            placeholder="Prescription"
+          ></textarea>
+          <button className="submitButton">Submit</button>
         </div>
       </div>
     </div>

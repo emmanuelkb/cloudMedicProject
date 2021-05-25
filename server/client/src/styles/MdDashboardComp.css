@@ -1,5 +1,5 @@
 .mdDashmain {
-  width: 50vw;
+  width: 80%;
   background-color: #e8eaf2;
   margin: 100px 50px 50px 50px;
   height: auto;
@@ -23,16 +23,18 @@
 .mdTopCards {
   display: flex;
   margin-bottom: 20px;
+  justify-content: center;
 }
 
 .mdTopCard {
   background-color: #fff;
-  width: 10em;
+  width: 12em;
   height: 5em;
   border-radius: 5px;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin: 10px;
+  border: 2px solid rgb(100, 188, 174);
 }
 
 .mdTopCard > p {
@@ -41,6 +43,7 @@
 }
 
 .mdBottomCard {
+  box-sizing: border-box;
   background-color: #fff;
   width: 22em;
   height: 15em;
@@ -48,4 +51,44 @@
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.1);
   text-align: center;
   margin-top: 10px;
+  overflow-y: scroll;
+  padding-top: 20px;
+  padding-left: 20px;
+  border: 2px solid rgb(100, 188, 174);
+}
+
+.mdBottomCards {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.patientList {
+  list-style: none;
+  display: flex;
+}
+.patientName {
+  width: 50%;
+  font-size: 20px;
+  text-align: left;
+}
+
+.patientIcons {
+  width: 50%;
+  display: flex;
+  font-size: 25px;
+  justify-content: space-evenly;
+}
+
+.appointmentList {
+  display: flex;
+  list-style: none;
+  font-size: 18px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
+.appointmentTime,
+.appointmentDate,
+.appointmentWith {
+  width: 33%;
 }

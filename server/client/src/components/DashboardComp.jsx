@@ -9,6 +9,7 @@ const DashboardComp = () => {
   const [appointment, setAppointment] = useState([]);
   const [userId, setUserId] = useState("");
   const token = localStorage.getItem("token");
+
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -29,6 +30,7 @@ const DashboardComp = () => {
         setUser(data.user);
         setMedic(data.medic);
         setUserId(data.user._id);
+        setAppointment(data.user.appointments);
         console.log(user);
       } catch (error) {
         console.log(error);
@@ -46,20 +48,19 @@ const DashboardComp = () => {
     document.getElementsByName("date")[0].setAttribute("max", nextWeekDate);
   };
 
-  useEffect(() => {
-    const getAppointment = async () => {
-      try {
-        const res = await axios.get(
-          "http://localhost:4000/appointment/" + userId
-        );
-        setAppointment(res.data.appointment);
-        console.log(res.data.appointment);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAppointment();
-  }, [userId]);
+  // useEffect(() => {
+  //   const getAppointment = async () => {
+  //     try {
+  //       const res = await axios.get(
+  //         "http://localhost:4000/appointment/" + userId
+  //       );
+  //       setAppointment(res.data.appointment);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getAppointment();
+  // }, [userId]);
 
   const handleClick = () => {
     const postAppointment = async () => {
@@ -76,6 +77,7 @@ const DashboardComp = () => {
           newAppointment
         );
         alert("Successfully Booked");
+        window.location.reload();
       } catch (error) {
         console.log(error);
         alert("Select another date/time");
@@ -169,12 +171,14 @@ const DashboardComp = () => {
           </div>
         </div>
         <div>
-          <p>My Appointments</p>
+          <p className="appointmentsTitle">My Appointments</p>
           <div className="appointments">
             {appointment.map((item) => (
-              <li>
-                <p>{item.date}</p>
-                <p>{item.time}</p>
+              <li className="appointmentItems">
+                <p className="appointmentDate">{item.date.split("T")[0]}</p>
+                <p>at</p>
+                <p className="appointmentTime">{item.time}</p>
+                <button className="appointmentButton">Cancel</button>
               </li>
             ))}
           </div>

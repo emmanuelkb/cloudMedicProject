@@ -7,7 +7,7 @@ const MdSideBar = () => {
   let history = useHistory();
   const handleClick = () => {
     localStorage.removeItem("token");
-    history.push("../");
+    history.push("../../");
     window.location.reload();
   };
 
@@ -26,9 +26,9 @@ const MdSideBar = () => {
         <NavLink className="MainLinks" to="/md/dashboard/patients">
           Patients
         </NavLink>
-        <NavLink className="MainLinks" to="/md/dashboard/schedule">
+        {/* <NavLink className="MainLinks" to="/md/dashboard/schedule">
           Schedule
-        </NavLink>
+        </NavLink> */}
         <NavLink className="MainLinks" to="/md/dashboard/chat">
           Chat
         </NavLink>
@@ -40,7 +40,7 @@ const MdSideBar = () => {
       <div className="SideBarLinks SideBarDivTwo">
         <hr />
 
-        <NavLink className="MainLinks" to="/dashboard/account">
+        <NavLink className="MainLinks" to="/md/dashboard/account">
           <VscEllipsis />
           Account
         </NavLink>

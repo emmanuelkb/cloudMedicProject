@@ -2,7 +2,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "../styles/Dashboard.css";
 import SideBar from "../components/SideBar";
 import DashboardComp from "../components/DashboardComp";
-import Appointment from "../components/Appointment";
+import Record from "../components/Record";
 import Account from "../components/Account";
 import Chat from "../components/Chat";
 
@@ -13,7 +13,8 @@ const Dashboard = () => {
         <SideBar />
         <Switch>
           <Route path="/dashboard" exact component={DashboardComp} />
-          <Route path="/dashboard/appointment" component={Appointment} />
+          <Route path="/dashboard/record" component={Record} />
+          {/* <Route path="/dashboard/appointment" component={Appointment} /> */}
           <Route path="/dashboard/account" component={Account} />
           <Route path="/dashboard/chat" component={Chat} />
         </Switch>

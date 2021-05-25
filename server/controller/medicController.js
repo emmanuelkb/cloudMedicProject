@@ -78,10 +78,11 @@ const verifyMd = async (req, res, next) => {
   token = token.split(" ")[1];
   try {
     let claims = jwt.verify(token, "123456789");
-    const doctor = await Doctor.findOne({ _id: claims._id });
+    const doctor = await Doctor.findOne({ _id: claims._id }).populate(
+      "appointments"
+    );
     const patient = await User.find({ _id: doctor.patients });
     res.status(201).json({ doctor, patient });
-    console.log(patient);
     return next();
   } catch (error) {
     return res.status(401).send({ message: "Unauthenticated" });

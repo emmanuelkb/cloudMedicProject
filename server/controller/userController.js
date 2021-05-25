@@ -12,8 +12,8 @@ const getUsers = async (req, res) => {
 //for message and conversation
 const getAUser = async (req, res) => {
   try {
-    const userId = req.query.id;
-    const user = await User.findById(userId);
+    const { id } = req.params;
+    const user = await User.findById(id);
     res.status(200).json(user);
   } catch (err) {
     res.status(500).json(err);
@@ -86,7 +86,9 @@ const getUser = async (req, res, next) => {
   token = token.split(" ")[1];
   try {
     let claims = jwt.verify(token, "123456789");
-    const user = await User.findOne({ _id: claims._id });
+    const user = await User.findOne({ _id: claims._id }).populate(
+      "appointments"
+    );
     const medic = await Doctor.findOne({ _id: user.medic });
     res.status(201).json({ user, medic });
     return next();

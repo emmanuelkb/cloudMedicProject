@@ -23,9 +23,9 @@ const SideBar = () => {
         <NavLink className="MainLinks" to="/dashboard">
           Dashboard
         </NavLink>
-        <NavLink className="MainLinks" to="/dashboard/appointment">
+        {/* <NavLink className="MainLinks" to="/dashboard/appointment">
           Appointment
-        </NavLink>
+        </NavLink> */}
         <NavLink className="MainLinks" to="/dashboard/record">
           Medical Record
         </NavLink>
