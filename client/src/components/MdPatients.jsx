@@ -45,7 +45,6 @@ const MdPatients = () => {
             ))}
           </div>
         </div>
-
         <div className="diagnosis">
           <p>Diagnosis/Report</p>
           <input type="text" placeholder="Patient Id" className="reportInput" />

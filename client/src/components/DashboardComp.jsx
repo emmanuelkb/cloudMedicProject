@@ -7,7 +7,6 @@ const DashboardComp = () => {
   const [time, setTime] = useState("");
   const [medic, setMedic] = useState([]);
   const [appointment, setAppointment] = useState([]);
-  const [userId, setUserId] = useState("");
   const token = localStorage.getItem("token");
 
   useEffect(() => {
