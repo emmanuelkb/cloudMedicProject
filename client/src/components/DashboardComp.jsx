@@ -21,10 +21,7 @@ const DashboardComp = () => {
           },
         };
 
-        let result = await fetch(
-          "http://localhost:4000/user/userCheck",
-          requestOptions
-        );
+        let result = await fetch("/user/userCheck", requestOptions);
         const data = await result.json();
 
         setUser(data.user);
@@ -72,10 +69,7 @@ const DashboardComp = () => {
           medic: user.medic,
         };
         console.log(newAppointment);
-        const res = await axios.post(
-          "http://localhost:4000/appointment/create",
-          newAppointment
-        );
+        const res = await axios.post("/appointment/create", newAppointment);
         alert("Successfully Booked");
         window.location.reload();
       } catch (error) {

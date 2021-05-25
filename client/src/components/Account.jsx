@@ -18,10 +18,7 @@ const Account = () => {
   useEffect(() => {
     try {
       const getUser = async () => {
-        const data = await axios.get(
-          "http://localhost:4000/user/userCheck",
-          options
-        );
+        const data = await axios.get("/user/userCheck", options);
         setUser(data.data.user);
         setPatchId(data.data.user._id);
         console.log(data);
@@ -66,14 +63,13 @@ const Account = () => {
     // console.log(data);
     // setCheck(data);
     // updateUser();
-    const response = await fetch("http://localhost:4000/user/edit/" + patchId, {
+    const response = await fetch("/user/edit/" + patchId, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newUser),
     });
-    const data = await response.json();
   };
   return (
     <div className="accountMain">

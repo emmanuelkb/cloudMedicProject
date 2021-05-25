@@ -14,6 +14,7 @@ const MdDashboardComp = () => {
   const [medic, setMedic] = useState([]);
   const [patient, setPatient] = useState([]);
   const [appointment, setAppointment] = useState([]);
+  const [appPatient, setAppPatient] = useState([]);
 
   const token = localStorage.getItem("token");
 
@@ -27,20 +28,22 @@ const MdDashboardComp = () => {
         },
       };
       try {
-        const result = await axios(
-          "http://localhost:4000/medic/verify",
-          requestOptions
-        );
+        const result = await axios("/medic/verify", requestOptions);
 
         setMedic(result.data.doctor);
         setPatient(result.data.patient);
         setAppointment(result.data.doctor.appointments);
+        console.log(result.data);
       } catch (error) {
         console.log(error);
       }
     };
     getMedic();
   }, []);
+
+  // const handlePatient = () => {
+
+  // };
   return (
     <div className="mdDashmain">
       <div className="mdDashmainTopText">
@@ -79,11 +82,11 @@ const MdDashboardComp = () => {
         <div>
           <p>My Appointments</p>
           <div className="mdBottomCard">
-            {appointment.map((item) => (
+            {appointment.map((item, index) => (
               <li className="appointmentList">
                 <p className="appointmentDate">{item.date.split("T")[0]}</p>
                 <p className="appointmentTime">{item.time}</p>
-                <p className="appointmentWith"> patient name</p>
+                <p className="appointmentWith">Emmanuel</p>
               </li>
             ))}
           </div>

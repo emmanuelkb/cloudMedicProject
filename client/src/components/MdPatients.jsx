@@ -18,10 +18,7 @@ const MdPatients = () => {
         },
       };
       try {
-        const result = await axios(
-          "http://localhost:4000/medic/verify",
-          requestOptions
-        );
+        const result = await axios("/medic/verify", requestOptions);
         setMedic(result.data.doctor);
         setPatient(result.data.patient);
       } catch (error) {

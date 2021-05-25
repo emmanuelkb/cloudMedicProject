@@ -17,10 +17,7 @@ const Account = () => {
   useEffect(() => {
     try {
       const getUser = async () => {
-        const data = await axios.get(
-          "http://localhost:4000/medic/verify",
-          options
-        );
+        const data = await axios.get("/medic/verify", options);
         setMedic(data.data.doctor);
         setPatchId(data.data.doctor._id);
         console.log(data.data.doctor);
