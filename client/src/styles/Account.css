@@ -1,30 +1,64 @@
+.accountMain {
+  margin: auto;
+  margin-top: 40px;
+  width: 50%;
+}
 .userInfo {
   display: flex;
-  flex-direction: column;
-  margin: 50px 300px;
+}
+
+.accounth2 {
+  color: #005450;
+  margin-bottom: 20px;
 }
 
 .updateButton {
   margin-top: 50px;
+  float: inherit;
   height: 40px;
   width: 120px;
-  background-color: rgb(206, 206, 207);
+  background-color: #005450;
   color: rgb(255, 255, 255);
   border-radius: 500px;
   border: none;
   text-transform: uppercase;
   outline: none;
-  align-self: center;
-  margin-bottom: 50px;
   cursor: pointer;
+  position: absolute;
+  left: 53%;
 }
 
 .updateInput {
-  border: none;
-  border-bottom: 2px solid grey;
+  border: 2px solid grey;
   font-size: 1em;
-  /* padding-bottom: 10px; */
+  padding-top: 10px;
+  padding-bottom: 10px;
   outline: none;
+  margin-top: 10px;
   margin-bottom: 10px;
   padding-left: 15px;
+}
+
+.updateInput:focus {
+  border-color: rgb(100, 188, 174);
+}
+
+.personalInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 50px;
+}
+
+.healthInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 50px;
+}
+
+.hr {
+  width: 0px;
+}
+
+.updateButton:hover {
+  color: rgb(100, 188, 174);
 }

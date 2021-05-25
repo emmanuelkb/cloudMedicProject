@@ -23,22 +23,25 @@ const MdSigninPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const newDoctor = {
+        email: email,
+        password: password,
+      };
 
-    const newDoctor = {
-      email: email,
-      password: password,
-    };
+      const data = await fetchQuery({
+        uri: "http://localhost:4000/medic/login",
+        method: "POST",
+        body: newDoctor,
+      });
 
-    const data = await fetchQuery({
-      uri: "http://localhost:4000/medic/login",
-      method: "POST",
-      body: newDoctor,
-    });
-
-    setTimeout(() => {
-      localStorage.setItem("token", data.token);
-      history.push("/mddashboard");
-    }, 1000);
+      setTimeout(() => {
+        localStorage.setItem("token", data.token);
+        history.push("/md/dashboard");
+      }, 1000);
+    } catch (error) {
+      alert("Incorrect email or password");
+    }
   };
 
   return (

@@ -19,11 +19,11 @@ function App() {
       <Switch>
         <Route path="/" exact component={IndexPage} />
         <Route path="/login" component={SignInPage} />
-        <Route path="/mdlogin" component={MdSignInPage} />
+        <Route path="/md/login" component={MdSignInPage} />
         <Route path="/news" component={NewsPage} />
         <Route path="/contact" component={ContactPage} />
         <Route path="/dashboard" exact component={DashboardPage} />
-        <Route path="/mddashboard" exact component={MdDashboardPage} />
+        <Route path="/md/dashboard" exact component={MdDashboardPage} />
         <SubState.Provider value={{ value, setValue }}>
           <Route path="/plans" component={PlansPage} />
           <Route path="/register" component={SignUpPage} />

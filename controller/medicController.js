@@ -12,9 +12,9 @@ const getDoctors = async (req, res) => {
 //for message and conversation
 const getADoctor = async (req, res) => {
   try {
-    const { doctorId } = req.query;
-    const doctor = await Doctor.findById(doctorId);
-    res.status(200).json(doctor);
+    const { id } = req.params;
+    const doctor = await Doctor.findById(id);
+    res.status(200).json({ doctor });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -69,7 +69,7 @@ const login = async (req, res) => {
   res.status(201).json({ token });
 };
 
-const verifyDoctor = async (req, res, next) => {
+const verifyMd = async (req, res, next) => {
   let token = req.headers["authorization"];
 
   if (!token) {
@@ -78,12 +78,35 @@ const verifyDoctor = async (req, res, next) => {
   token = token.split(" ")[1];
   try {
     let claims = jwt.verify(token, "123456789");
-    const doctor = await Doctor.findOne({ _id: claims._id });
-    res.status(201).json({ doctor });
+    const doctor = await Doctor.findOne({ _id: claims._id }).populate(
+      "appointments"
+    );
+    const patient = await User.find({ _id: doctor.patients });
+    res.status(201).json({ doctor, patient });
     return next();
   } catch (error) {
     return res.status(401).send({ message: "Unauthenticated" });
   }
 };
 
-module.exports = { getDoctors, getADoctor, register, login, verifyDoctor };
+const addPatient = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { patientId } = req.body;
+    const doctor = await Doctor.findById(id);
+    doctor.patients.push(patientId);
+    res.status(201).json({ doctor });
+    await doctor.save();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = {
+  getDoctors,
+  getADoctor,
+  register,
+  login,
+  verifyMd,
+  addPatient,
+};

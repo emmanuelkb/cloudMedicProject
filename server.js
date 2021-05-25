@@ -8,6 +8,7 @@ const userRouter = require("./Router/userRouter");
 const conversationRouter = require("./Router/conversationRouter");
 const messageRouter = require("./Router/messageRouter");
 const medicRouter = require("./Router/medicRouter");
+const appointmentRouter = require("./Router/appoitnmentRouter");
 const path = require("path");
 require("./config/dbConnect");
 const PORT = process.env.PORT || 4000;
@@ -77,9 +78,6 @@ app.use(morgan("tiny"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-  // app.get("*", (req, res) => {
-  //   res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-  // });
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
@@ -90,6 +88,7 @@ app.get("/", (req, res) => {
 });
 app.use("/user", userRouter);
 app.use("/medic", medicRouter);
+app.use("/appointment", appointmentRouter);
 app.use("/conversation", conversationRouter);
 app.use("/message", messageRouter);
 

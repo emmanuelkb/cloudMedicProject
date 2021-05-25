@@ -3,11 +3,11 @@ import "../styles/SideBar.css";
 import { NavLink, useHistory, withRouter } from "react-router-dom";
 import { VscSignOut, VscEllipsis } from "react-icons/vsc";
 
-const SideBar = () => {
+const MdSideBar = () => {
   let history = useHistory();
   const handleClick = () => {
     localStorage.removeItem("token");
-    history.push("../");
+    history.push("../../");
     window.location.reload();
   };
 
@@ -20,16 +20,16 @@ const SideBar = () => {
       </div>
 
       <div className="SideBarLinks SideBarDivOne">
-        <NavLink className="MainLinks" to="/dashboard">
+        <NavLink className="MainLinks" to="/md/dashboard">
           Dashboard
         </NavLink>
-        {/* <NavLink className="MainLinks" to="/dashboard/appointment">
-          Appointment
-        </NavLink> */}
-        <NavLink className="MainLinks" to="/dashboard/record">
-          Medical Record
+        <NavLink className="MainLinks" to="/md/dashboard/patients">
+          Patients
         </NavLink>
-        <NavLink className="MainLinks" to="/dashboard/chat">
+        {/* <NavLink className="MainLinks" to="/md/dashboard/schedule">
+          Schedule
+        </NavLink> */}
+        <NavLink className="MainLinks" to="/md/dashboard/chat">
           Chat
         </NavLink>
         {/* <NavLink className="MainLinks" to="/dashboard/calendar">
@@ -40,7 +40,7 @@ const SideBar = () => {
       <div className="SideBarLinks SideBarDivTwo">
         <hr />
 
-        <NavLink className="MainLinks" to="/dashboard/account">
+        <NavLink className="MainLinks" to="/md/dashboard/account">
           <VscEllipsis />
           Account
         </NavLink>
@@ -53,4 +53,4 @@ const SideBar = () => {
   );
 };
 
-export default withRouter(SideBar);
+export default withRouter(MdSideBar);

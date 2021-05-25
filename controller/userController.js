@@ -12,8 +12,8 @@ const getUsers = async (req, res) => {
 //for message and conversation
 const getAUser = async (req, res) => {
   try {
-    const { userId } = req.query;
-    const user = await User.findById(userId);
+    const { id } = req.params;
+    const user = await User.findById(id);
     res.status(200).json(user);
   } catch (err) {
     res.status(500).json(err);
@@ -76,6 +76,7 @@ const login = async (req, res) => {
   res.status(201).json({ token });
 };
 
+//verify user by token
 const getUser = async (req, res, next) => {
   let token = req.headers["authorization"];
 
@@ -85,56 +86,60 @@ const getUser = async (req, res, next) => {
   token = token.split(" ")[1];
   try {
     let claims = jwt.verify(token, "123456789");
-    const user = await User.findOne({ _id: claims._id });
-    res.status(201).json({ user });
+    const user = await User.findOne({ _id: claims._id }).populate(
+      "appointments"
+    );
+    const medic = await Doctor.findOne({ _id: user.medic });
+    res.status(201).json({ user, medic });
     return next();
   } catch (error) {
     return res.status(401).send({ message: "Unauthenticated" });
   }
 };
 
-// const getUser = async (req, res) => {
-//   try {
-//     let cookie = req.cookies["jwt"];
-//     let claims = jwt.verify(cookie, "123456789");
-//     if (!claims) {
-//       return res.status(401).send({ message: "Unauthenticated" });
-//     }
+const addMedic = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { medicId } = req.body;
+    const user = await User.findByIdAndUpdate(
+      id,
+      { medic: medicId },
+      { new: true }
+    );
+    res.status(201).json({ user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-//     const user = await User.findOne({ _id: claims._id });
+const getMedic = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const medic = await Doctor.findOne({ _id: user.medic });
+    res.status(201).json({ medic });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-//     const { password, ...data } = await user.toJSON();
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(req.params);
+    const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+    res.status(200).json({ user });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
-//     res.send(data);
-//   } catch (error) {
-//     return res.status(401).send({ message: "Unauthenticated" });
-//   }
-// };
-
-// const verifyToken = async (req, res, next) => {
-//   let token = req.headers["Authorization"];
-
-//   if (!token) {
-//     return res.status(401).json({ message: "Not Authorized" });
-//   }
-
-//   token = token.split(" ")[1];
-
-//   try {
-//     let user = jwt.verify(token, "123456789");
-//     req.user = user.id;
-//     console.log(user);
-//     return next();
-//   } catch (error) {
-//     res.status(401).json({ message: "Invalid Token" });
-//   }
-
-//   next();
-// };
-
-// const logout = (req, res) => {
-//   res.cookie("jwt", "", { maxAge: 0 });
-//   res.send({ message: "success" });
-// };
-
-module.exports = { register, getUsers, getUser, login, getAUser };
+module.exports = {
+  register,
+  getUsers,
+  getUser,
+  login,
+  getAUser,
+  addMedic,
+  getMedic,
+  updateUser,
+};

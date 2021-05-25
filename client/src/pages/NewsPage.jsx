@@ -5,10 +5,11 @@ import Footer from "../components/Footer";
 import "../styles/NewsPage.css";
 import Newsletter from "../components/Newsletter";
 import Loader from "../components/Loader";
+import axios from "axios";
 
 const NewsPage = () => {
   const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,12 +22,12 @@ const NewsPage = () => {
       setNews(data.articles);
     };
     fetchData();
-    setLoading(true);
+    setLoading(false);
   }, []);
 
   return (
     <div>
-      {loading ? (
+      {!loading ? (
         <div>
           <Navigation />
           <div className="NewsMain">

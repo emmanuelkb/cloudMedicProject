@@ -31,7 +31,7 @@ const Footer = () => {
           </a>
         </p>
         <p>
-          <a className="footerItems" href="/mdlogin">
+          <a className="footerItems" href="/md/login">
             MD Sign in
           </a>
         </p>

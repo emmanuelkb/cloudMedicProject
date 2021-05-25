@@ -1,6 +1,6 @@
 .Dashboard {
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
   display: flex;
   background-color: #e8eaf2;
-  height: 100vh;
+  /* background-color: #eceefa; */
 }
