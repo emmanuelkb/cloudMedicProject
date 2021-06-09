@@ -11,12 +11,4 @@ router.patch("/:id", userController.addMedic);
 router.get("/medic/:id", userController.getMedic);
 router.patch("/edit/:id", userController.updateUser);
 
-router.use(function (req, res) {
-  res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
-
-// router.post("/logout", userController.logout);
-
-// router.delete("/:id:", userController.deleteUser);
-
 module.exports = router;

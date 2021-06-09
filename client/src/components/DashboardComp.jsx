@@ -25,7 +25,6 @@ const DashboardComp = () => {
 
         setUser(data.user);
         setMedic(data.medic);
-        setUserId(data.user._id);
         setAppointment(data.user.appointments);
         console.log(user);
       } catch (error) {
