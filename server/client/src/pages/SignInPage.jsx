@@ -22,7 +22,7 @@ const SigninPage = () => {
       setTimeout(() => {
         localStorage.setItem("token", data.data.token);
         history.push("/dashboard");
-      }, 1000);
+      }, 500);
     } catch (error) {
       alert("Incorrect email or password");
     }

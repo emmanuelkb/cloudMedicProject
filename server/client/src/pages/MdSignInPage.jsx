@@ -1,19 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import axios from "axios";
 import "../styles/MdSignInPage.css";
-
-const fetchQuery = async ({ uri, method = "GET", body = null }) => {
-  const response = await fetch(uri, {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: body !== null ? JSON.stringify(body) : null,
-  });
-  const data = await response.json();
-
-  return data;
-};
 
 const MdSigninPage = () => {
   let history = useHistory();
@@ -29,16 +17,12 @@ const MdSigninPage = () => {
         password: password,
       };
 
-      const data = await fetchQuery({
-        uri: "http://localhost:4000/medic/login",
-        method: "POST",
-        body: newDoctor,
-      });
-
+      const data = await axios.post("/medic/login", newDoctor);
+      console.log(data.data);
       setTimeout(() => {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.data.token);
         history.push("/md/dashboard");
-      }, 1000);
+      }, 500);
     } catch (error) {
       alert("Incorrect email or password");
     }
